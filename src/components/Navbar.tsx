@@ -52,6 +52,11 @@ export default function Navbar() {
             9+
           </span>
         </div>
+        <img
+          className="w-9 h-9 rounded-full"
+          src="https://yt3.ggpht.com/ytc/AMLnZu9O9HrX2hojxWWvJVFYpNN29wVgbcDBHKaqgRQQlw=s108-c-k-c0x00ffffff-no-rj"
+          alt="logo"
+        />
       </div>
     </div>
   );
