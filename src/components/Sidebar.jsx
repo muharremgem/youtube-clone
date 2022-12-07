@@ -200,6 +200,7 @@ export default function Sidebar() {
       </ul>
       <span className="px-4 text-sm text-zinc-400">&copy; 2022 Google</span>
       <br />
+
       <p className="px-4 pt-3 text-sm text-zinc-400">
         This Clone İs For Educational Purpose Only.
       </p>
