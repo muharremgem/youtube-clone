@@ -17,13 +17,11 @@ export default function Search() {
   const searchTerm = useAppSelector((state) => state.youtubeApp.searchTerm);
 
   useEffect(() => {
-    return () => {
-      dispatch(clearVideos());
-      if (searchTerm === "") navigate("/");
-      else {
-        dispatch(getSearchPageVideos(false));
-      }
-    };
+    dispatch(clearVideos());
+    if (searchTerm === "") navigate("/");
+    else {
+      dispatch(getSearchPageVideos(false));
+    }
   }, [dispatch, navigate, searchTerm]);
 
   return (
@@ -34,21 +32,23 @@ export default function Search() {
       <div className="flex" style={{ height: "92.5vh" }}>
         <Sidebar />
         {videos.length ? (
-          <InfiniteScroll
-            dataLength={videos.length}
-            next={() => dispatch(getSearchPageVideos(true))}
-            hasMore={videos.length < 500}
-            loader={<Spinner />}
-            height={600}
-          >
-            {videos.map((item: HomePageVideos) => {
-              return (
-                <div className="my-5">
-                  <SearchCard data={item} key={item.videoId} />
-                </div>
-              );
-            })}
-          </InfiniteScroll>
+          <div className="py-8 pl-8 flex flex-col gap-5 w-full">
+            <InfiniteScroll
+              dataLength={videos.length}
+              next={() => dispatch(getSearchPageVideos(true))}
+              hasMore={videos.length < 500}
+              loader={<Spinner />}
+              height={600}
+            >
+              {videos.map((item: HomePageVideos) => {
+                return (
+                  <div className="my-5">
+                    <SearchCard data={item} key={item.videoId} />
+                  </div>
+                );
+              })}
+            </InfiniteScroll>
+          </div>
         ) : (
           <Spinner />
         )}
