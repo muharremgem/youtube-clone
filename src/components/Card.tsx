@@ -18,6 +18,24 @@ export default function Card({ data }: { data: HomePageVideos }) {
           />
         </Link>
       </div>
+      <div className="flex gap-2">
+        <div className="min-w-fit">
+          <a href="#">
+            <img
+              src={data.channelInfo.image}
+              alt="channel"
+              className="h-9 w-9 rounded-full"
+            />
+          </a>
+        </div>
+        <div>
+          <h3>
+            <a href="#" className="line-clmap-2">
+              {data.videoTitle}
+            </a>
+          </h3>
+        </div>
+      </div>
     </div>
   );
 }
