@@ -1,9 +1,8 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
-import { parseIsolatedEntityName } from "typescript";
 import { RootState } from "..";
+import { parseData } from "../../utils";
 import { YOUTUBE_API_URL } from "../../utils/constants";
-import { parseData } from "../../utils/parseData";
 
 const API_KEY = process.env.REACT_APP_YOUTUBE_DATA_API_KEY;
 
