@@ -1,6 +1,5 @@
 import React, { useEffect } from "react";
 import InfiniteScroll from "react-infinite-scroll-component";
-import { useDispatch } from "react-redux";
 import Card from "../components/Card";
 import Navbar from "../components/Navbar";
 import Sidebar from "../components/Sidebar";
