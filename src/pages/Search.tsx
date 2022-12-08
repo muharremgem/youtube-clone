@@ -1,16 +1,14 @@
 import React, { useEffect } from "react";
 import InfiniteScroll from "react-infinite-scroll-component";
-import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import Card from "../components/Card";
 import Navbar from "../components/Navbar";
 import Sidebar from "../components/Sidebar";
 import Spinner from "../components/Spinner";
 import { clearVideos } from "../store";
 import { useAppDispatch, useAppSelector } from "../store/hooks";
-import { getHomePageVideos } from "../store/reducers/getHomePageVideos";
 import { getSearchPageVideos } from "../store/reducers/getSearchPageVideos";
 import { HomePageVideos } from "../Types";
+import SearchCard from "../components/SearchCard";
 
 export default function Search() {
   const navigate = useNavigate();
@@ -28,10 +26,6 @@ export default function Search() {
     };
   }, [dispatch, navigate, searchTerm]);
 
-  useEffect(() => {
-    dispatch(getHomePageVideos(false));
-  }, [dispatch]);
-
   return (
     <div className="max-h-screen overflow-hidden">
       <div style={{ height: "7.5vh" }}>
@@ -42,16 +36,18 @@ export default function Search() {
         {videos.length ? (
           <InfiniteScroll
             dataLength={videos.length}
-            next={() => dispatch(getHomePageVideos(true))}
+            next={() => dispatch(getSearchPageVideos(true))}
             hasMore={videos.length < 500}
             loader={<Spinner />}
             height={600}
           >
-            <div className="grid gap-y-14 gap-x-8 grid-cols-4 p-8">
-              {videos.map((item: HomePageVideos) => {
-                return <Card data={item} key={item.videoId} />;
-              })}
-            </div>
+            {videos.map((item: HomePageVideos) => {
+              return (
+                <div className="my-5">
+                  <SearchCard data={item} key={item.videoId} />
+                </div>
+              );
+            })}
           </InfiniteScroll>
         ) : (
           <Spinner />
