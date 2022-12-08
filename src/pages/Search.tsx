@@ -32,13 +32,13 @@ export default function Search() {
       <div className="flex" style={{ height: "92.5vh" }}>
         <Sidebar />
         {videos.length ? (
-          <div className="py-8 pl-8 flex flex-col gap-5 w-full">
+          <div className="py-8 pl-8 flex flex-col gap-5 w-full justify-center items-center">
             <InfiniteScroll
               dataLength={videos.length}
               next={() => dispatch(getSearchPageVideos(true))}
               hasMore={videos.length < 500}
               loader={<Spinner />}
-              height={600}
+              height={"calc(100vh-56px)"}
             >
               {videos.map((item: HomePageVideos) => {
                 return (

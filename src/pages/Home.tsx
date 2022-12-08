@@ -36,9 +36,12 @@ export default function Home() {
             next={() => dispatch(getHomePageVideos(true))}
             hasMore={videos.length < 500}
             loader={<Spinner />}
-            height={650}
+            height={"calc(100vh-56px)"}
           >
-            <div className="grid gap-y-14 gap-x-8 grid-cols-4 p-8">
+            <div
+              className="grid gap-y-14 gap-x-8 grid-cols-4 p-8"
+              style={{ width: "calc(100vw - 320px)" }}
+            >
               {videos.map((item: HomePageVideos) => {
                 return <Card data={item} key={item.videoId} />;
               })}
